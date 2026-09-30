@@ -12,7 +12,7 @@ namespace Soenneker.Railway.HttpClients.Tests;
 public sealed class RailwayGraphQlHttpClientTests
 {
     [Test]
-    public async Task ConfiguresAndCachesBearerClient()
+    public async ValueTask ConfiguresAndCachesBearerClient()
     {
         await using var provider = CreateProvider(new() { ["Railway:ApiKey"] = "test-token" });
         var factory = provider.GetRequiredService<IRailwayGraphQlHttpClient>();
@@ -23,7 +23,7 @@ public sealed class RailwayGraphQlHttpClientTests
     }
 
     [Test]
-    public async Task SupportsProjectTokensAndCustomEndpoint()
+    public async ValueTask SupportsProjectTokensAndCustomEndpoint()
     {
         await using var provider = CreateProvider(new()
         {
