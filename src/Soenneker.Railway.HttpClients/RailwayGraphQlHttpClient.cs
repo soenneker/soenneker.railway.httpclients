@@ -28,7 +28,7 @@ public sealed class RailwayGraphQlHttpClient : IRailwayGraphQlHttpClient
     {
         return _httpClientCache.Get(nameof(RailwayGraphQlHttpClient), (config: _config, baseUrl: _config["Railway:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Railway:ApiKey");
+            var apiKey = state.config.GetStringStrict("Railway:ApiKey");
             string authHeaderName = state.config["Railway:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Railway:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
